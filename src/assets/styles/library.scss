@@ -1,0 +1,137 @@
+$colorDarkBlue: #276585;
+$colorDarkGreen: #277a54;
+$colorBlack: #000000;
+$colorWhite: #FFFFFF;
+$colorOrange: #eea60a;
+$colorGreen: #52d669;
+$alpha2: 0.2;
+$alpha4: 0.4;
+$alpha5: 0.5;
+$alpha6: 0.6;
+$alpha8: 0.8;
+$headerSize: 60px;
+$contentSize: calc(100% - 61px);
+
+.wrapper {
+    position: relative;
+    height: 100%;
+    border-bottom: 1px solid $colorDarkBlue;
+    background-color: rgba($colorBlack, $alpha5);
+
+    article {
+        margin: 20px;
+    }
+
+    &Image {
+        
+        width: 320px;
+        height: auto;
+    }
+
+    &Controls {
+        $heightSize: 38px;
+
+        padding-top: 12px;
+        color: $colorGreen;
+
+        .playBtn {
+            
+            i {
+                margin-right: 4px;
+                font-size: $heightSize;
+
+            }
+
+            &:hover {
+                transition: color .2s;
+                color: rgba($colorGreen, $alpha6);
+                cursor: pointer;
+            }
+        }
+
+        .launchBtn {
+            padding: 0 20px;
+            line-height: $heightSize;
+            letter-spacing: 0.44px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 28px;
+            border: 1px solid;
+
+            &:hover {
+                transition: color .2s;
+                color: rgba($colorGreen, $alpha6);
+                cursor: pointer;
+            }
+        }
+    }
+
+    .libraryDescription {
+        h3 {
+            color: $colorWhite;
+        }
+
+        h6 {
+            margin-left: 20px;
+            span {
+                &:first-child {
+                    margin-right: 4px;
+                    color: rgba($colorWhite, $alpha5);
+                }
+
+                &:last-child {
+                   color: $colorGreen; 
+                }
+            }
+        }
+
+        p {
+            color: rgba($colorWhite, $alpha8);
+        }
+    }
+
+    .whatInside {
+        color: rgba($colorWhite, $alpha8);
+
+        &-title {
+            letter-spacing: 0.44px;
+        }
+
+        &-item {
+            i {
+                font-size: 30px;
+            }
+
+            span {
+                font-size: 10px;
+                text-transform: uppercase;
+
+            }
+        }
+    }
+
+    .closeBtn {
+        position: absolute;
+        top: 0px; right: 0px;
+        color: rgba($colorWhite, $alpha4);
+        background-color: rgba($colorWhite, $alpha2);
+        padding: 0 0 0 8px ;
+        line-height: 24px;
+
+        span {
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        i {
+            font-size: 20px;
+        }
+
+        &:hover {
+            background-color: rgba($colorWhite, $alpha4);
+            color: rgba($colorWhite, 1);
+            transition: all .2s;
+            cursor: pointer;
+        }
+    }
+}

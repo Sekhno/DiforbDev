@@ -1,0 +1,227 @@
+$categorySize: 80px;
+$subCategoriesHeight: calc(100vh - 81px);
+$colorWhite: #FFFFFF;
+$colorBlack: #000000;
+$colorDarkBlue: rgb(39,101,133);
+$colorLightBlue: #63eff5;
+$colorGreen: #65e36d;
+$colorDarkGreen: #54c75e;
+$alpha1: 0.1;
+$alpha2: 0.2;
+$alpha4: 0.4;
+$alpha8: 0.8;
+$gradient1: linear-gradient(to bottom, rgba($colorBlack, $alpha4) 0%, rgba($colorBlack, 0) 50%);
+$gradient2: linear-gradient(to bottom, rgba($colorDarkBlue, 0) 0%, rgba($colorDarkBlue, 1) 70%);
+$gradient3: linear-gradient(to bottom, rgba($colorDarkBlue, 1) 30%, rgba($colorDarkBlue, 0) 100%);
+$gradient4: linear-gradient(to bottom, $colorLightBlue 0%, $colorDarkGreen 100%);
+$shadow1: 0 -1px rgba($colorBlack, $alpha1) inset, 0 1px rgba($colorWhite, $alpha2);
+$arrow: 1px dotted rgba($colorBlack, $alpha4);
+$transition: top cubic-bezier(0.68, -0.55, 0.265, 1.55) .2s;
+
+
+:host {
+    position: relative;
+}
+
+perfect-scrollbar {
+    padding-right: 20px;
+}
+
+.categoryWrapper {
+
+    color:white;
+
+    .category {
+        width: $categorySize;
+        height: $categorySize;
+        box-shadow: $shadow1;
+        
+
+        > section {
+            > i {
+                font-size: 40px;
+            }
+    
+            > span {
+                font-size: 12px;
+                text-transform: uppercase;
+            }
+
+            &:hover {
+                color: rgba($colorWhite, $alpha2);
+                cursor: pointer;
+            }
+
+            &.selected {
+                color: $colorGreen;
+
+                &:hover {
+                    color: rgba($colorGreen, $alpha2);
+                }
+            }
+        }
+    }
+
+    .selectedCategoryTail {
+        width: $categorySize;
+        height: $categorySize;
+        position: absolute;
+        top: 0;
+        background-color: rgba($colorBlack, 0.5);
+        transition: top .2s linear;
+        z-index: -1;
+
+        > i {
+            font-size: 18px;
+            color:$colorGreen;
+        }
+
+        .tail {
+            float: right;
+            width: 3px; height: inherit;
+            background: $gradient4;
+        }
+    }
+
+    .selectedSoundTail {
+        position: absolute;
+        top: 0; 
+        width: 100px; height: 28px;
+        transition: $transition;
+        background-color: rgba($colorBlack, $alpha4);
+        border-radius: 4px;
+        z-index: -1;
+    }
+}
+
+.subCategoryWrapper {
+    height: $subCategoriesHeight;
+    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    
+    &.left {
+        left: $categorySize;
+
+        .subCategory {
+            margin-left: 20px;
+
+            > section {
+                > span {
+                    margin-left: 8px;
+                }
+            }
+        }
+        
+        .soundWrapper {
+            margin-left: 28px;
+
+            .sound {
+                &:before {
+                    top: 14px; left: -16px;
+                } 
+
+                &:after {
+                    top: -8px; left: -17px
+                }
+            }
+        }
+    }
+
+    &.right {
+        right: $categorySize;
+
+        .subCategory {
+            > section {
+                > span {
+                    margin-right: 8px;
+                }
+            }
+        } 
+
+        .soundWrapper {
+            margin-right: 28px;
+
+            .sound {
+                &:before {
+                    top: 14px; right: -16px; 
+                } 
+
+                &:after {
+                    top: -8px; right: -17px
+                }
+            }
+        }
+    }
+
+    .subCategory {
+        box-shadow: $shadow1;
+
+        > section {
+            line-height: 40px;
+            
+    
+            > i {
+                font-size: 24px;
+            }
+    
+            > span {
+                font-size: 16px;
+            }
+    
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.soundWrapper {
+    .sound {
+        position: relative;
+        line-height: 28px;
+
+        &.selected {
+            color: $colorDarkGreen;
+            font-weight: bold;
+
+            &:hover {
+                cursor: pointer;
+                color: rgba($colorDarkGreen, $alpha8)
+            }
+        }
+
+        &:before, &:after {
+            content: '';
+            clear: both;
+            display: table;
+            position: absolute;
+        }
+        
+        &:before {
+            width: 12px; height: 0;
+            border-top: $arrow;
+            
+        }
+
+        &:after {
+            width: 0; height: 27px;
+            border-left: $arrow;
+        }
+
+        &:last-child {
+            &:after {
+                height: 22px;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+            color: rgba($colorWhite, $alpha2)
+        }
+    }
+}
+
+
+
+

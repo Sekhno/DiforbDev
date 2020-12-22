@@ -1,0 +1,58 @@
+<nav class="navigation" fxShow fxHide.xs="true" fxHide.lg="false">
+	<div class="container">
+		<ul class="navigation-list">
+			<li class="navigation-item"><a (click)="onRouterLink($event, ['dashboard'])">home</a></li>
+			<li class="navigation-item"><a>license</a>
+				<ul class="dropdown">
+					<li class="dropdown-item"><a (click)="onRouterLink($event, ['dashboard', 'license'])">License agreement</a></li>
+					<li class="dropdown-item"><a (click)="onRouterLink($event, ['dashboard', 'policy'])">Privacy policy</a></li>
+				</ul>
+			</li>
+			<li class="navigation-item"><a (click)="onRouterLink($event, ['dashboard', 'touch'])">Get in touch</a></li>
+		</ul>
+	</div>
+</nav>
+
+<nav class="mobile-navigation" fxShow fxHide.xs="false" fxHide.lg="true">
+    <i class="mobile-navigation__btn icon-menu" (click)="slideRightAnimationState = 'active'"></i>
+
+    <div class="container" [@slideRightAnimation]="slideRightAnimationState">
+        <div class="btnClose" fxLayout="row" fxLayoutAlign="end">
+            <i class="icon-close" (click)="slideRightAnimationState = 'inactive'"></i>
+        </div>
+        <ul>
+            <li (click)="onRouterLink($event, ['dashboard'])">Home</li>
+            <li (click)="onRouterLink($event, ['dashboard', 'license'])">License agreement</li>
+            <li (click)="onRouterLink($event, ['dashboard', 'policy'])">Privacy policy</li>
+            <li (click)="onRouterLink($event, ['dashboard', 'touch'])">Get in touch</li>
+        </ul>
+    </div>
+</nav>
+
+<div class="displayTable" [@fade]="'in'">
+    <div class="displayTableCell">
+
+        <div class="authBlock">
+            <h3>Thank You for Registering</h3>
+
+            <div class="formGroup" *ngIf="authService.userData as user">
+                <p class="text-center">We have sent a confirmation email to <strong>{{user.email}}</strong>.</p>
+                <p class="text-center">Please check your email and click on the link to verfiy your email address.</p>
+            </div>
+
+            <!-- Calling SendVerificationMail() method using authService Api -->
+            <div class="formGroup">
+                <button type="button" class="btn btnPrimary" (click)="authService.SendVerificationMail()">
+                    <i class="fas fa-redo-alt"></i>
+                    Resend Verification Email
+                </button>
+            </div>
+
+        </div>
+
+        <div class="redirectToLogin">
+            <span>Go back to?<span class="redirect" routerLink="/sign-in"> Sign in</span></span>
+        </div>
+
+    </div>
+</div>

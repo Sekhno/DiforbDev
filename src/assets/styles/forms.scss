@@ -1,0 +1,162 @@
+$form-size: 300px;
+$colorBlack: #000000;
+$colorWhite: #FFFFFF;
+$colorFacebook: #5692d1;
+$colorGoogle: #e06746;
+$colorLogin: #00cd99;
+$colorLightBlue: #6cc0bd;
+$colorBlue: #7beaf4;
+$alpha2: 0.2;
+$alpha3: 0.3;
+$alpha6: 0.6;
+$alpha8: 0.8;
+$gradient1: linear-gradient(to bottom, rgba($colorBlack, $alpha3) 0, rgba($colorBlack, 0) 100%);
+
+.diforb-logo {
+    display: inline-block;
+    pointer-events: none;
+
+    .icon-logo {
+        position: relative;
+        top: 8px;
+        font-size: 140px;
+        line-height: 60px;
+        vertical-align: middle;
+        color: rgba($colorWhite, $alpha8);
+    }
+}
+
+.displayTable { display: table }
+
+.displayTableCell { display: table-cell }
+
+.displayTable {
+    height: 100%;
+    margin: auto;
+    width: 100%;
+    max-width: $form-size;
+    
+
+    .displayTableCell {
+        vertical-align: middle;
+
+        .diforb-logo {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}
+
+.authBlock {
+    padding: 8px 20px;
+	background: $gradient1;
+    border-radius: 4px;
+
+    h3 {
+        padding: 8px 0;
+        color: $colorWhite;
+        text-align: center;
+    }
+
+    p {
+        color: $colorWhite;
+
+        &.text-center {
+            text-align: center;
+        }
+    }
+
+    .forgotPassword {
+        color: $colorWhite;
+        text-align: right;
+        cursor: pointer;
+    }
+}
+
+.redirectToLogin {
+    color: white;
+    text-align: center;
+
+    .redirect {
+        cursor: pointer;
+    }
+}
+
+.formGroup {
+    margin: 4px 0;
+
+    input {
+        width: 100%;
+        appearance: none;
+        text-align: center;
+        line-height: 30px;
+        color: $colorLightBlue;
+        border-radius: 4px;
+        border: 1px solid rgba($colorWhite, $alpha2);
+        background-color: rgba($colorBlack, $alpha6);
+        -webkit-text-fill-color: $colorBlue;
+
+        &:read-only {
+            background: rgba($colorBlack, $alpha3)
+        }
+
+        &[type=button] {
+            border: none;
+        }
+
+        &[type=submit] {
+            background-color: rgba($colorBlack, 1);
+        }
+
+    }
+
+    button {
+        width: 100%;
+        appearance: none;
+        line-height: 30px;
+        border-radius: 4px;
+        border: none;
+        background-color: rgba($colorBlack, $alpha2);
+        color: $colorWhite;
+
+        &[disabled] {
+            color: rgba($colorWhite, $alpha3);
+            cursor: inherit;
+        }
+
+        &.googleBtn {
+            background-color: $colorGoogle;
+        }
+
+        &.facebookBtn {
+            background-color: $colorFacebook;
+        }
+
+        &.loginBtn {
+            background-color: $colorLogin;
+        }
+
+        i {
+            margin-right: 4px;
+            font-size: 1.8em;
+            vertical-align: middle;
+        }
+    }
+
+    .or {
+        display: block;
+        text-align: center;
+        color: white;
+    }
+
+    .error {
+        margin: 4px 0 12px 0;
+        color: $colorWhite;
+        line-height: 30px;
+	    text-align: center;
+        background: rgba(red , $alpha3);
+        border-radius: 4px;
+    }
+}
+
+.btn { cursor: pointer }

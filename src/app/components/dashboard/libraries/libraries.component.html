@@ -1,0 +1,55 @@
+<header>
+    <h3 fxLayout="row" fxLayoutAlign="start center"> 
+        <i class="icon-libs"></i> 
+        <span class="routerBack" routerLink="/dashboard">Libraries</span> 
+        <span class="headerBreadcrumbs" [class.visible]="childOutlet.length"
+            fxShow="true" fxShow.xs="false"> / {{ childOutlet }}</span>
+    </h3>
+</header>
+
+
+<div class="outlet" [class.collapsed]="!childOutlet.length" [@collapseAnimation]="childOutlet.length ? 'open' : 'closed'"
+    fxShow="true" fxShow.xs="false">
+    <router-outlet></router-outlet>
+</div>
+
+<perfect-scrollbar [usePSClass]="'ps'">
+    <div class="content" fxFlexFill fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="8px 8px grid"
+        [class.shortcut]="childOutlet.length">
+        <section class="libraryItem" fxFlex="25" fxFlex.sm="33" fxFlex.xs="100" *ngFor="let lib of libraries">
+            <div class="wrapper" fxLayout="column" fxLayout.xs="row">
+                <figure fxLayout="column" fxLayoutAlign="center center" fxFlex.xs="100px"
+                    [routerLink]="lib.shortUrl">
+                    <img [attr.src]="'assets/images/covers/' + lib.image + '.jpg'" [attr.alt]="lib.name">
+                    <div class="shadow" fxLayout="column" fxLayoutAlign="end center" fxShow="true" fxShow.xs="false" fxShow.sm="false">
+                        <span class="shadowInfo">Click for details</span>
+                    </div>
+                </figure>
+                <div fxFlex.xs="100">
+                    <div class="wrapperTitle" fxLayout="row" fxLayoutAlign="space-between center">
+                        <h6>{{ lib.name }}</h6>
+                        <div class="price" [ngClass]="{'free': lib.price === 0}">
+                            <span class="priceCost">{{ lib.price > 0 ? '$' + lib.price : 'free'  }}</span>
+                        </div>
+                    </div>
+                    <div class="wrapperControls" fxLayout="raw" fxLayoutAlign="space-between center">
+                        <div class="playBtn" fxLayout="raw" fxLayoutAlign="start center" fxShow="true" fxShow.xs="false"
+                            (click)="onPlay(lib)">
+                            <i [ngClass]="{'icon-pause-radial': lib.play, 'icon-play-radial': !lib.play}"></i>
+                            <span class="playBtnLabel">Demo</span>
+                        </div>
+                        <div class="playBtn" fxLayout="raw" fxLayoutAlign="start center" fxShow="false" fxShow.xs="true"
+                            (touchstart)="onPlay(lib)">
+                            <i [ngClass]="{'icon-pause-radial': lib.play, 'icon-play-radial': !lib.play}"></i>
+                            <span class="playBtnLabel">Demo</span>
+                        </div>
+                        <div class="launchBtn" (click)="auth.goRouterLink(1000, ['app', lib.shortUrl])">Launch</div>
+                    </div>
+                    <div class="progress">
+                        <div class="progressBar" [style.width.%]="(lib?.time?.cur * 100) / lib?.source?.buffer?.duration"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</perfect-scrollbar>

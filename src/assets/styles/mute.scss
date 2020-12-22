@@ -1,0 +1,23 @@
+$colorGreen: #65e36d;
+
+:host {
+    height: 20px;
+}
+
+svg {
+
+    height: inherit;  width: auto;
+
+    circle {
+        will-change: cx;
+        transition: cx .3s;
+       
+        &.active {
+            fill: $colorGreen;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}

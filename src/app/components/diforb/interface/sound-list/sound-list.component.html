@@ -1,0 +1,47 @@
+<div class="categoryWrapper">
+    <ul>
+        <li class="category" *ngFor="let category of data$ | async; index as i" 
+            (click)="selected.category = i + 1">
+            <section fxLayout="column" fxLayoutAlign="center center" fxFill [ngClass]="{selected: selected.category === i + 1}">
+                <i [ngClass]="id + '-' + (category.name | lowercase)"></i>
+                <span>{{ category.name }}</span>
+            </section>
+
+            <ul class="subCategoryWrapper" [ngClass]="side" *ngIf="selected.category && selected.category === i + 1" 
+                [@doubleSlideAnimation]="params">
+
+                <perfect-scrollbar [usePSClass]="'ps'">
+                    <li class="subCategory" *ngFor="let sub of category.data">
+                    
+                        <section *ngIf="sub.type == 'subcategory'" [fxLayout]="side == 'left' ? 'row' : 'row-reverse'" fxLayoutAlign="start center"
+                            (click)="sub.selected = !sub.selected">
+                            <i [ngClass]="id + '-' + (sub.name | lowercase)"></i>
+                            <span>{{ sub.name }}</span>
+                        </section>
+    
+                        <section *ngIf="sub.type == 'sound'" fxLayout="row" fxLayoutAlign="start center"
+                            (click)="selectSound($event, { category: category.name, sub: category.name, sound: sub.name })">
+                            <i [ngClass]="id + '-' + (category.name | lowercase)"></i>
+                            <span>{{ sub.name }}</span>
+                        </section>
+    
+                        <ul class="soundWrapper" *ngIf="sub.selected && sub.type == 'subcategory' && sub.child == 'sound'" fxLayout="column">
+                            <li class="sound" *ngFor="let sound of sub.data" [fxFlexAlign]="side == 'left' ? 'start' : 'end'"
+                                [ngClass]="{selected: selected.sound == id+'|'+category.name+'|'+sub.name+'|'+sound.name}"
+                                (click)="selectSound($event, { category: category.name, sub: sub.name, sound: sound.name })">
+                                {{sound.name}}
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- <li class="selectedSoundTail" #soundTail></li> -->
+                </perfect-scrollbar>
+            </ul>
+        </li>
+
+        <li class="selectedCategoryTail" *ngIf="selected.category" [ngStyle]="{top: (selected.category-1) * 80 + 'px'}" [ngClass]="side">
+            <i class="icon-play" *ngIf="false" [@flashAnimation]="true" (@flashAnimation.done)="test($event)"></i>
+            <div class="tail"></div>
+        </li>
+    </ul>
+</div>
+

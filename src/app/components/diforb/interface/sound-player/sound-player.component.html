@@ -1,0 +1,55 @@
+<div class="wrapper">
+    <div class="player">
+        <div class="playerWrapper" fxLayout="column" fxLayoutAlign="space-between center" fxFill>
+            <div class="timeshiftSlider">
+                <app-slider mode="top" (change)="changedTimeshift($event)"></app-slider>
+            </div>
+            <div class="volumeSliders" fxLayout="row" fxLayoutAlign="space-between">
+                <div class="volumeSlider" >
+                    <app-slider mode="left-top" (change)="changedVolume($event, 'left-top')"></app-slider>
+                </div>
+                <div class="volumeSlider">
+                    <app-slider mode="right-top" (change)="changedVolume($event, 'right-top')"></app-slider>
+                </div>
+            </div>
+            <div class="pitchSliders" fxLayout="row" fxLayoutAlign="space-between">
+                <div class="pitchSlider">
+                    <app-pitch mode="left" (change)="changedPitch($event, 'left')"></app-pitch>
+                </div>
+                <div class="pitchSlider">
+                    <app-pitch mode="right" (change)="changedPitch($event, 'right')"></app-pitch>
+                </div>
+            </div>
+            <div class="reverbSliders" fxLayout="row" fxLayoutAlign="center">
+                <div class="reverbSlider left">
+                    <app-slider mode="left-bottom" 
+                        (select)="changedModeReverb($event, 'left')"
+                        (change)="changedReverb($event, 'left')"></app-slider>
+                </div>
+                <div class="playBtn" (click)="play()">
+                    <svg id="progress" width="86" height="86" viewPort="0 0 86 86" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <circle r="32" cx="43" cy="43" fill="transparent" stroke-dasharray="214" stroke-dashoffset="0"></circle>
+                        <circle id="bar" r="32" cx="43" cy="43" fill="transparent" stroke-dasharray="214" stroke-dashoffset="214" #progressBar></circle>
+                    </svg>
+                    <div class="playBtnInner" fxLayout="row" fxLayoutAlign="center center">
+                        <i [ngClass]="playing ? 'icon-pause' : 'icon-play'"></i>
+                    </div>
+                </div>
+                <div class="reverbSlider right">
+                    <app-slider mode="right-bottom" 
+                        (select)="changedModeReverb($event, 'right')" 
+                        (change)="changedReverb($event, 'right')"></app-slider>
+                </div>
+            </div>
+            <div class="downloadBtn" [ngClass]="{inactive: true}">
+                Download
+            </div>
+        </div>
+        <div class="playerHolder">
+            <div class="inner" fxLayout="column" fxLayoutAlign="center center" fxFill>
+                <i class="icon-logo"></i>
+                <h4>{{ title | uppercase }}</h4>
+            </div>
+        </div>
+    </div>
+</div>

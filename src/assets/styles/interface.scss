@@ -1,0 +1,36 @@
+$colorBlack: #000000;
+$colorDarkBlue: #276585;
+$alpha4: 0.4;
+$categorySize: 80px;
+
+:host {
+    display: table;
+    width: 100%; height: 100%;
+    position: absolute;
+    top: 0; left: 0;
+}
+
+:before, :after {
+    pointer-events: none;
+}
+
+header {
+    background-color: rgba($colorBlack, $alpha4);
+    border-bottom: 1px solid $colorDarkBlue;
+}
+
+main {
+    position: relative;
+
+    &:before {
+        content: '';
+        clear: both;
+        display: block;
+        height: 70%;
+        position: absolute;
+        top: 0; 
+        left: $categorySize;
+        right: $categorySize; 
+        background: linear-gradient(to bottom, rgba($colorBlack, $alpha4) 0%, rgba($colorBlack, 0) 50%);
+    }
+}

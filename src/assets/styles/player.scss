@@ -1,0 +1,278 @@
+$playerSize: 624px;
+$holderSize: 212px;
+$timeshiftWidth: 274px;
+$timeshiftHeight: 76px;
+$offsetTop: -60px;
+$colorWhite: #FFFFFF;
+$colorDarkWhite: #e8e8e1;
+$colorGray: #9ca5a3;
+$colorBlack: #000000;
+$colorBlue: #5ec7e1;
+$colorGreen1: #2fca76;
+$colorGreen2: #66ec06;
+$colorGreen3: #2eca75; 
+$colorGreen4: #65e36d;
+$alpha8: 0.8;
+$alpha6: 0.6;
+$alpha4: 0.4;
+$alpha5: 0.5;
+$alpha3: 0.3;
+$alpha2: 0.2;
+
+
+.player {
+    width: $playerSize;
+    height: $playerSize;
+    margin-top: $offsetTop;
+    padding: 8px;
+    position: relative;
+    border-radius: 50%;
+    @extend %backgroundExtend_1;
+
+    &:before {
+        content: '';
+        clear: both;
+        position: absolute;
+        top: 30px; left: 108px;
+        width: 100%;
+        height: 100%;
+        transition: opacity .2s;
+        background-image: url('../images/png/circle-shadow.png');
+        background-repeat: no-repeat;
+        background-position: center bottom;
+        background-size: contain;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    &:hover {
+        &:before {
+            opacity: 0.7;
+        }
+    }
+
+    &Wrapper {
+
+        border-radius: inherit;
+        @extend %backgroundExtend_2;
+
+        /*Временное для разработки*/
+        &:before {
+            $offset: 70px;
+            content: '';
+            clear: both;
+            position: absolute;
+            top: $offset;
+            left: $offset;
+            right: $offset;
+            bottom: $offset;
+            border: 1px solid transparent;
+            border-radius: 50%;
+            z-index: 10;
+            pointer-events: none;
+        }
+        /* --- */
+
+        .timeshiftSlider {
+            width: $timeshiftWidth;
+            height: $timeshiftHeight;
+            margin-top: 26px;
+        }
+
+        .volumeSliders {
+            width: 100%;
+            margin-top: -4px;
+            padding: 0 42px;
+
+            .volumeSlider {
+                width: 105px;
+                height: 227px;
+            }
+        }
+
+        
+
+        .pitchSliders {
+            width: 100%;
+            height: 50px;
+            padding: 0 34px 0 50px;
+
+        }
+
+        .reverbSliders {
+            position: relative;
+            width: 100%;
+
+            // &:before {
+            //     content: '';
+            //     clear: both;
+            //     width: 100%;
+            //     position: absolute;
+            //     top: 16px;
+            //     border-top: 1px solid gold; 
+            // }
+
+            .reverbSlider {
+                width: 200px;
+                height: 100px;
+                position: relative;
+
+                &.left {
+                    left: 36px;
+                }
+
+                &.right {
+                    
+                    left: -30px;
+                    top: -2px;
+                }
+            }
+        }
+
+        .playBtn {
+            // margin: 10px -36px 0 -36px;
+
+            #progress {
+                transform-box: fill-box;
+                transform-origin: center;
+                transform: rotate(-90deg);
+                
+                circle {
+                    transition: stroke-dashoffset 1s linear;
+                    stroke: rgba($colorBlack, $alpha2);
+                    stroke-width: 6px;
+                }
+
+                #bar {
+                    stroke: $colorBlue;
+                }
+            }
+
+            &Inner {
+                width: 56px;
+                height: 56px;
+                margin-top: -76px;
+                margin-left: 15px;
+                border-radius: 50%;
+                background: $colorDarkWhite;
+                box-shadow: 0 0 0 2px rgba($colorBlack, $alpha3);
+
+                i {
+                    margin: 2px 0 0 2px;
+                    color: $colorGreen1;
+                    font-size: 24px;
+
+                    &.icon-pause {
+                        text-shadow:0 0 23px $colorGreen2;
+                    }
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                #progress {
+                    circle {
+                        &:nth-child(1) {
+                            stroke: rgba($colorGray, $alpha6);
+                        }
+                    }
+                }
+            }
+              
+            
+        }
+
+        .downloadBtn {
+            margin-bottom: 24px;
+            padding: 0 20px;
+            line-height: 32px;
+            letter-spacing: 0.44px;
+            font-weight: bold;
+            text-transform: uppercase;
+            background: $colorDarkWhite;
+            border-radius: 12px;
+            border-bottom: 3px solid $colorGray;
+            color: $colorGreen3;
+            transition: all .3s;
+            cursor: pointer;
+
+            &.inactive {
+                color:rgba($colorBlack, $alpha5);
+                background-color: transparent;
+
+                &:not(.inactive) {
+                    &:hover {
+                        color: $colorGreen4;
+                        border-bottom: 4px solid $colorGray;
+                        text-shadow: 0 0 10px $colorGreen2;
+                    }
+
+                    &:active {
+                        color: $colorGreen4;
+                        border-bottom: 2px solid $colorGray;
+                        text-shadow: 0 0 7px $colorGreen2;
+                        background: none;
+                    }
+                }
+            }
+        }
+    }
+
+    &Holder {
+        width: $holderSize;
+	    height: $holderSize;
+        padding: 8px;
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+	    border-radius: 50%;
+	    border: 2px solid $colorWhite;
+        box-shadow: 0 0 20px 20px rgba($colorBlack, 0.06);
+    
+        @extend %backgroundExtend_3;
+
+        .inner {
+            width: 100%;
+            height: 100%;
+	        position: relative;
+            border-radius: inherit;
+            color: $colorWhite;
+            @extend %backgroundBlueGridExtend;
+            
+            i {
+                font-size: 140px;
+                line-height: 40px;
+            }
+        }
+    }
+}
+
+%backgroundExtend_1 {
+    background: rgb(255,255,255); 
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(162,162,162,1) 100%);
+}
+
+%backgroundExtend_2 {
+    background: url('../images/png/player_pattern.png'), 
+    radial-gradient(ellipse at center, rgba(217,217,211,1) 21%, rgb(243, 248, 248) 41%, rgb(245, 245, 245) 55%, rgb(204, 204, 204) 95%);
+}
+
+%backgroundExtend_3 {
+    background: rgb(181,181,181);
+	background: linear-gradient(to bottom, rgba(181,181,181,1) 0%, rgba(239,238,238,1) 100%);
+}
+
+%backgroundBlueGridExtend {
+    box-shadow: 0 0 2px 2px rgba(0,0,0,0.2) inset, 0 0 10px 10px $colorBlue inset;
+    background-color: $colorBlue;
+    background-image:
+                        linear-gradient(rgba(255,255,255,.2) 2px, transparent 2px),
+                        linear-gradient(90deg, rgba(255,255,255,.2) 2px, transparent 2px),
+                        linear-gradient(rgba(255,255,255,0.2) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.2) 1px, transparent 1px),
+                        linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+    background-size: 90px 90px, 90px 90px, 15px 15px, 15px 15px, 5px 5px, 5px 5px;
+    background-position: -2px 5px, 5px -2px, -1px 6px, 6px -1px, 0px -4px, -4px 0px;
+}

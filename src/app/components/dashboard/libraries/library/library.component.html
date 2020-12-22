@@ -1,0 +1,38 @@
+<figure class="wrapper" fxLayout="row">
+    <article fxLayout="column" fxLayoutAlign="space-between">
+        <img class="wrapperImage"
+            [attr.src]="'./assets/images/covers/' + library.image + '.jpg'" 
+            [attr.alt]="library.name">
+        <div class="wrapperControls" fxLayout="raw" fxLayoutAlign="space-between">
+            <div class="playBtn" fxLayout="raw" fxLayoutAlign="start center" (click)="audio.onSubject(library)">
+                <i [ngClass]="{'icon-pause-radial': library.play, 'icon-play-radial': !library.play}"></i>
+                <span class="playBtnLabel">Demo</span>
+            </div>
+            <div class="launchBtn" (click)="auth.goRouterLink(1000, ['app', library.shortUrl])">Launch</div>
+        </div>
+    </article>
+
+    <article fxLayout="column" fxLayoutAlign="space-between">
+        <div class="libraryDescription">
+            <h3>{{ library.name | uppercase }}</h3>
+            <h6><span>by</span><span>Diforb</span></h6> 
+            <p>"{{ library.description }}"</p> 
+        </div>
+        <div class="whatInside">
+            <h6 class="whatInside-title">What inside</h6>
+            <ul fxFlexFill fxLayout="row wrap" fxLayoutGap="12px 4px grid">
+                <li class="whatInside-item" *ngFor="let item of library?.inside">
+                    <div fxLayout="column" fxLayoutAlign="center center">
+                        <i [attr.class]="id + '-' + item"></i>
+                        <span>{{ item }}</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </article>
+
+    <span class="closeBtn" fxLayout="row" fxLayoutAlign="space-between center" routerLink="../">
+        <span>close</span>
+        <i class="icon-close"></i>
+    </span>
+</figure>

@@ -1,0 +1,15 @@
+<div [@rotatePusherAnimation]="menuOpened ? 'active' : 'inactive'" fxLayout="column" fxFill>
+    
+    <header fxFlex="60px">
+        <sound-header></sound-header>
+    </header>
+
+    <main fxFlex="100%" fxLayout="raw" fxLayoutAlign="space-between" >
+        <sound-list side="left"></sound-list>
+
+        <sound-player fxLayout="column" fxLayoutAlign="center"></sound-player>
+
+        <sound-list side="right"></sound-list>
+    </main>
+</div>
+

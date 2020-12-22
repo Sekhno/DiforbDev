@@ -1,0 +1,178 @@
+$colorWhite: #FFFFFF;
+$colorBlack: #000000;
+$colorGreen: #52d669;
+$colorDarkBlue: #276585;
+$alpha2: 0.2;
+$alpha4: 0.4;
+$alpha6: 0.6;
+$alpha8: 0.8;
+
+.darkAlpha2 { background-color: rgba($colorBlack, $alpha2) }
+.darkAlpha4 { background-color: rgba($colorBlack, $alpha4) }
+.darkAlpha6 { background-color: rgba($colorBlack, $alpha6) }
+.darkAlpha8 { background-color: rgba($colorBlack, $alpha8) }
+
+main {
+    max-width: 1200px;
+    height: 100%;
+    margin: auto;
+
+    &.full {
+        max-width: 100%;
+        .dashboard {
+            margin-left: 0px;
+        }
+    }
+
+    &.mobile {
+
+        .sidebar-navigation {
+            position: fixed;
+            top: 0; left: 0;
+            transform: translateX(-100%);
+        }
+
+        .dashboard {
+            margin-left: 0px;
+        }
+    }
+
+    .btnMenu {
+        position: fixed;
+        top: 12px; right: 12px;
+        color: $colorGreen;
+        font-size: 32px;
+    }
+
+    .sidebar-navigation {
+
+        
+
+        .sideBarSection {
+            border-bottom: 1px solid $colorDarkBlue;
+
+            &.noneBorder {
+                border-bottom: none;
+            }
+        }
+
+        .diforb-logo {
+            line-height: 60px;
+
+            i {
+                color: $colorWhite;
+                font-size: 140px;
+                vertical-align: bottom;
+                line-height: 44px;
+                pointer-events: none;
+            }
+        }
+
+        .userInfo {
+            margin: 24px 0 24px 20px;
+
+            .rounded-circle {
+                width: 40px;
+                height: 40px;
+                margin-right: 12px;
+                border-radius: 50%;
+            }
+
+            h6 {
+                color: $colorWhite;
+                line-height: 1;
+
+                strong {
+                    font-size: 0.8em;
+                }
+            }
+
+            i {
+                color: $colorGreen;
+                font-size: 52px;
+            }
+        }
+
+        .controls {
+            margin: 4px 8px 4px 0;
+
+            i {
+                color: $colorWhite;
+                font-size: 16px;
+                cursor: pointer;
+
+                &.active-link {
+                    color: $colorGreen;
+                }
+
+                &:hover {
+                    color: rgba($colorWhite, $alpha6);
+                    transition: color .2s;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .sidebarLink {
+            color: $colorWhite;
+
+            i, span {
+                line-height: 52px;
+            }
+
+            i {
+                margin: 0 20px;
+                font-size: 24px;
+            }
+
+            span {
+                font-size: 16px;
+            }
+
+            &.active-link {
+                color: $colorGreen;
+            }
+
+            &:hover {
+                color: rgba($colorWhite, $alpha6);
+                transition: color .2s;
+                cursor: pointer;
+            } 
+        }
+
+        .commonLinks {
+            color: $colorWhite;
+
+            li {
+                line-height: 2.4;
+
+                &:hover {
+                    color: rgba($colorWhite, $alpha6);
+                    transition: color .2s;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .socialLinks {
+            line-height: 60px;
+            
+            a {
+                font-size: 20px;
+                margin-right: 28px;
+                color: $colorWhite;
+                line-height: 60px;
+                text-decoration: none;
+
+                &:hover {
+                    color: rgba($colorWhite, $alpha6);
+                    transition: color .2s;
+                }
+            }
+        }
+    }
+
+    .dashboard {
+        margin-left: 12px;
+    }
+}

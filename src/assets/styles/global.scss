@@ -1,0 +1,52 @@
+:host {
+    font-family: 'Play',  Arial,  Tahoma,  Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Play',  Arial,  Tahoma,  Verdana, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.4;
+    overflow: hidden;
+}
+
+*, ::after, ::before { 
+    box-sizing: border-box;
+    outline: none;
+}
+
+h1 { font-size: 36px }
+h2 { font-size: 30px }
+h3 { font-size: 24px }
+h4 { font-size: 20px }
+h5 { font-size: 18px }
+h6 { font-size: 16px }
+
+/* Perfect scrollbar */
+.ps {
+    .ps__rail-x,
+    .ps__rail-y {
+        background-color: rgba(black, 0.1) !important;
+    }
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 767px) {
+
+    
+}
+
+@media screen and (max-width: 575px) {
+   
+
+}
+
+

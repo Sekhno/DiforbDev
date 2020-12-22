@@ -1,0 +1,123 @@
+@import 'variables';
+
+@mixin blueRadialbckground {
+    background: black radial-gradient(ellipse at top, $light-blue-color-rgba 0%, $dark-blue-color-rgba 70%);
+}
+
+@mixin blueprintGrid {
+    background-color: #5ec7e1;
+    background-image:   linear-gradient(rgba(255, 255, 255, .2) 2px, transparent 2px),
+                        linear-gradient(90deg, rgba(255, 255, 255, .2) 2px, transparent 2px),
+                        linear-gradient(rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, .2) 1px, transparent 1px),
+                        linear-gradient(rgba(255, 255, 255, .1) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255, 255, 255, .1) 1px, transparent 1px);
+    background-size:    2px 50%,
+                        50% 2px,
+                        1px 10%,
+                        10% 1px,
+                        1px 5%,
+                        5% 1px;
+    // background-position:    -2px 0px,
+                            // 0px -2px;
+}
+
+
+@mixin whitePrintGrad {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 1) 0%,
+                rgba(162, 162, 162, 1) 100%);
+}
+
+@mixin greyPrintGrad {
+    background: rgb(181, 181, 181);
+    background: linear-gradient(to bottom,
+                rgba(181, 181, 181, 1) 0%,
+                rgba(239, 238, 238, 1) 100%);
+}
+
+@mixin backgroundOptional(
+    $url,
+    $size: 100%,
+    $pos: 0 0,
+    $repeat: no-repeat,
+    $origin: content-box
+) {
+    background-image: $url;
+    background-repeat: $repeat;
+    background-size: $size;
+    background-position: $pos;
+    background-origin: $origin;
+}
+
+@mixin dualBackgroundOptional(
+    $url_1, $url_2,
+    $size1: 100% 100%, $size2: 100% 100%,
+    $pos1: 0 0, $pos2: 0 0 
+) {
+    background-image: $url_1, $url_2;
+    background-repeat: no-repeat;
+    background-size:    $size1, $size2;
+    background-position: $pos1, $pos2;
+    background-origin: content-box;
+}
+
+@mixin triangleArrow($size, $color) {
+    width: 0; height: 0;
+    border-width: $size;
+    border-style: solid;
+    border-top-color: transparent;
+    border-left-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: $color;
+}
+
+%clearfix {
+    content: '';
+    position: absolute;
+    display: block;
+}
+
+%hoverEffect {
+    position: relative;
+    white-space: nowrap;
+    cursor: pointer;
+    color: white;
+
+    &::before {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 0;
+        white-space: nowrap;
+        color: $colorGreen;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+
+    &:hover {
+
+        &::before {
+            width: 100%;
+        }
+    }
+}
+
+// transition: background-position-x .25s ease-in 0s;
+// background: #52d669 -webkit-gradient(linear, 53% 12%, 59% 78%, from(#52d669), to(#FFFFFF));
+// background-repeat: no-repeat;
+// background-position-y: center;
+// background-position-x: 100%;
+// background-size: 300% 28px;
+// -webkit-text-fill-color: transparent;
+// background-clip: text;
+
+// &:hover {
+//     background-position-x: 0%;
+// }
+
+

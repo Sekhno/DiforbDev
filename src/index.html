@@ -1,13 +1,102 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <title>Diforb</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+	<meta charset="utf-8">
+	<title>DiforbDev</title>
+	<base href="/">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--favicons-->
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicons/apple-touch-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicons/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicons/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicons/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicons/apple-touch-icon-152x152.png">
+    <link rel="icon" type="image/png" href="./assets/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="./assets/favicons/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="./assets/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="./assets/favicons/manifest.json">
+    <link rel="mask-icon" href="./assets/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-TileImage" content="./assets/favicons/mstile-144x144.png">
+    <meta name="theme-color" content="#05a69c">
+	<!-- end favicons-->
+	
+    <link href='https://fonts.googleapis.com/css?family=Play:400,700' rel='stylesheet' type='text/css'>
+
+	<!--stylesheet-->
+	<link href="./assets/styles/preload.css" rel="stylesheet">
+	<!--end stylesheet-->
 </head>
+
 <body>
-  <app-root></app-root>
+	<app-root></app-root>
+
+	<!--
+	<	Preloader
+	-->
+		<div id="loader" class="pageload-overlay" data-opening="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 29.96875 C 40.01804 29.96875 40.03125 29.98196 40.03125 30 C 40.03125 30.01804 40.01804 30.03125 40 30.03125 C 39.98196 30.03125 39.96875 30.01804 39.96875 30 C 39.96875 29.98196 39.98196 29.96875 40 29.96875 Z">
+			<div id="loader-wrapper">
+				<div id="loader-circle"></div>
+				<div id="logo"></div>
+			</div>
+			<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="xMidYMid slice">
+				<path d="M -18 -26.90625 L -18 86.90625 L 98 86.90625 L 98 -26.90625 L -18 -26.90625 Z M 40 -25.6875 C 70.750092 -25.6875 95.6875 -0.7500919 95.6875 30 C 95.6875 60.750092 70.750092 85.6875 40 85.6875 C 9.2499078 85.6875 -15.6875 60.750092 -15.6875 30 C -15.6875 -0.7500919 9.2499078 -25.6875 40 -25.6875 Z"/>
+			</svg>
+		</div>
+	<!--
+	<	End Preloader
+	-->
+
+	<!-- scripts -->
+	<script src="./assets/js/snap.svg-min.js"></script>
+	<script src="./assets/js/classie.js"></script>
+	<script src="./assets/js/svgLoader.js"></script>
+	<script>
+		var loader, audioContext;
+
+		if (global === undefined) {
+    		var global = window;
+		}
+		  
+		window.onload = function(){
+			
+			audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+			var handler = function(){
+				audioContext.resume().then(() => {
+					console.log('Playback resumed successfully');
+					document.removeEventListener('click', handler);
+					document.removeEventListener('touchstart', handler);
+  				});
+			}
+
+			document.addEventListener('click', handler);
+			document.addEventListener('touchstart', handler)
+		}
+
+		var onPreloader = function(object) {
+			if (!loader) {
+				loader = new SVGLoader(document.getElementById('loader'), object);
+			}
+
+			loader.show();
+			loader.options = { speedIn: 1000, speedOut: 1000 };
+		}
+
+		var offPreloader = function(time) {
+			setTimeout(function() {
+				loader.hide();
+			}, time);
+		}
+		// { speedIn : 1000, easingIn : mina.easeinout }
+		onPreloader({ speedIn : 0, easingIn : mina.easeinout })
+	</script>
+	<!-- end of scripts -->
 </body>
+
 </html>

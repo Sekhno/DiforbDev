@@ -1,0 +1,212 @@
+$colorDarkBlue: #276585;
+$colorDarkGreen: #277a54;
+$colorBlack: #000000;
+$colorWhite: #FFFFFF;
+$colorOrange: #eea60a;
+$colorGreen: #52d669;
+$alpha2: 0.2;
+$alpha4: 0.4;
+$alpha6: 0.6;
+$alpha8: 0.8;
+$headerSize: 60px;
+$outletSize: 340px;
+$contentSize: calc(100% - 61px);
+$contentShortSize: calc(100% - 341px - 61px);
+
+header {
+    background-color: rgba($colorBlack, $alpha4);
+    border-bottom: 1px solid $colorDarkBlue;
+    line-height: $headerSize;
+
+    h3 {
+        margin-left: 20px;
+        color: $colorWhite;
+        letter-spacing: 0.44px;
+
+        .headerBreadcrumbs {
+            margin-left: 8px;
+            color: $colorGreen;
+            visibility: hidden;
+
+            &.visible {
+                visibility: visible;
+            }
+        }
+
+        &:hover {
+            opacity: 0.6;
+            transition: opacity .2s;
+            cursor: pointer;
+        }
+    }
+
+    i {
+        margin-right: 12px;
+    }
+}
+
+.outlet {
+    height: $outletSize;
+
+    &.collapsed {
+        height: 0;
+    }
+    
+}
+
+.content {
+    height: $contentSize;
+    padding: 8px 8px 60px 8px;
+    background-color: rgba($colorBlack, $alpha2);
+
+    &.shortcut {
+        height: $contentShortSize;
+        padding: 8px 8px 400px 8px;
+    }
+
+    .libraryItem {
+
+        // &.xs {
+        //     max-width: 300px;
+        //     margin: auto;
+        // }
+
+        .wrapper {
+            background-color: rgba($colorBlack, $alpha4);
+
+            &Title {
+                padding: 0 8px;
+                line-height: 32px;
+            }
+        }
+
+        figure {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            
+
+            img {
+                width: 100%;
+                height: auto;
+                transform: scale(1);
+                transform-origin: center;
+                transition: transform .2s;
+            }
+
+            .shadow {
+                position: absolute;
+                top: 0; left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                z-index: 2;
+                background-image: linear-gradient(to bottom, rgba($colorBlack, $alpha2), rgba($colorBlack, $alpha8) 70%);
+                transition: opacity .2s;
+                
+
+                &Info {
+                    margin-bottom: 20px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    color: rgba($colorGreen, $alpha8);
+                    text-transform: uppercase;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+
+                img { transform: scale(1.2) }
+
+                .shadow { 
+                    opacity: 1;
+                    transition-delay: .1s; 
+                }
+            }
+        }
+
+        h6 {
+            color: $colorWhite;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .price {
+            width: 40px;
+            height: 16px;
+            text-align: center;
+            line-height: 14px;
+	        border-radius: 3px;
+            background-color: $colorOrange;
+
+            &.free {
+                background-color: $colorGreen;
+            }
+
+            &Cost {
+                color: $colorWhite;
+                font-size: 0.9em;
+                font-weight: bold;
+                letter-spacing: 0.22px;
+                text-transform: uppercase;
+                text-shadow: 1px 1px 3px $colorBlack;
+            }
+        }
+
+        .wrapperControls {
+            padding: 8px;
+            color: $colorGreen;
+
+            .playBtn {
+                
+                i {
+                    font-size: 32px;
+                }
+
+                &Label {
+                    margin-left: 4px;
+                }
+
+                @extend %hoverEffect;
+            }
+
+            .launchBtn {
+                padding: 0 20px;
+                line-height: 30px;
+                font-size: 12px;
+                font-weight: bold;
+                letter-spacing: 0.44px;
+                text-transform: uppercase;
+                border-radius: 28px;
+                border: 1px solid;
+                
+                @extend %hoverEffect;
+            }
+        }
+
+        .progress {
+            position: relative;
+            height: 3px;
+            background-color: $colorDarkGreen;
+
+            &Bar {
+                position: absolute;
+                top: 0; left: 0;
+                width: 0%;
+                height: 100%;
+                background-color: $colorGreen;
+                will-change: width;
+                transition: width 1.1s linear;
+            }
+        }
+    }
+}
+
+%hoverEffect {
+    &:hover {
+        transition: opacity .2s;
+        opacity: $alpha6;
+        cursor: pointer;
+    }
+}

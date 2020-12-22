@@ -1,0 +1,27 @@
+<header>
+    <h3 fxLayout="row" fxLayoutAlign="start center"> 
+        <i class="icon-info"></i> 
+        <span class="routerBack" routerLink="/dashboard">F.A.Q.</span> 
+    </h3>
+</header>
+
+
+<div class="content">
+    <perfect-scrollbar [usePSClass]="'ps'">
+        <div class="textWrapperHead"><span></span><span></span></div>
+        <div class="textWrapper">
+            <ul>
+                <li *ngFor="let item of items;">
+                    <div class="question" (click)="item.show = !item.show">
+                        <i [ngClass]="{'icon-chevron-down': !item.show, 'icon-chevron-up': item.show}"></i>
+                        <span><b>Q:</b> {{item.question}}</span>
+                    </div>
+                    <div class="answer" [style.fontSize.px]="item.show?14:0"><b>A: </b> {{item.answer}}</div>
+                </li>
+            </ul>
+        </div>
+    </perfect-scrollbar>
+</div>
+
+
+

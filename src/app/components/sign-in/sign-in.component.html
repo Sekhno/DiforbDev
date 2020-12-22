@@ -1,0 +1,91 @@
+<nav class="navigation" fxShow fxHide.xs="true" fxHide.lg="false">
+	<div class="container">
+		<ul class="navigation-list">
+			<li class="navigation-item"><a (click)="onRouterLink($event, ['dashboard'])">home</a></li>
+			<li class="navigation-item"><a>license</a>
+				<ul class="dropdown">
+					<li class="dropdown-item"><a (click)="onRouterLink($event, ['dashboard', 'license'])">License agreement</a></li>
+					<li class="dropdown-item"><a (click)="onRouterLink($event, ['dashboard', 'policy'])">Privacy policy</a></li>
+				</ul>
+			</li>
+			<li class="navigation-item"><a (click)="onRouterLink($event, ['dashboard', 'touch'])">Get in touch</a></li>
+		</ul>
+	</div>
+</nav>
+
+<nav class="mobile-navigation" fxShow fxHide.xs="false" fxHide.lg="true">
+    <i class="mobile-navigation__btn icon-menu" (click)="slideRightAnimationState = 'active'"></i>
+
+    <div class="container" [@slideRightAnimation]="slideRightAnimationState">
+        <div class="btnClose" fxLayout="row" fxLayoutAlign="end">
+            <i class="icon-close" (click)="slideRightAnimationState = 'inactive'"></i>
+        </div>
+        <ul>
+            <li (click)="onRouterLink($event, ['dashboard'])">Home</li>
+            <li (click)="onRouterLink($event, ['dashboard', 'license'])">License agreement</li>
+            <li (click)="onRouterLink($event, ['dashboard', 'policy'])">Privacy policy</li>
+            <li (click)="onRouterLink($event, ['dashboard', 'touch'])">Get in touch</li>
+        </ul>
+    </div>
+</nav>
+
+<div class="displayTable" [@fade]="'in'" [@shakeAnimation]="shakeAnimationState" (@shakeAnimation.done)="shakeAnimationState = 'inactive'">
+    <div class="displayTableCell">
+
+        <div class="diforb-logo">
+            <i class="icon-logo"></i>
+        </div>
+
+        <div class="authBlock" [formGroup]="signinForm" novalidate>
+            <h3>Sign In</h3>
+            <div class="formGroup">
+                <input type="text" class="formControl" placeholder="Email" formControlName="userEmail">
+                <div class="error" *ngIf="_userEmail.invalid && _userEmail.touched">
+                    <span *ngIf="_userEmail.errors?.required">Email is required</span>
+                    <span *ngIf="_userEmail.errors?.email">Field most be is e-mail</span>
+                </div>
+            </div>
+
+            <div class="formGroup">
+                <input type="password" class="formControl" placeholder="Password" formControlName="userPassword">
+                <div class="error" *ngIf="_userPassword.invalid && _userPassword.touched">
+                    <span *ngIf="_userPassword.errors?.required">Password is required</span>
+                </div>
+            </div>
+
+            <!-- Calling SignIn Api from AuthService -->
+            <div class="formGroup">
+                <button type="button" class="btn loginBtn" (click)="submit()">
+                    Log in
+                </button>
+            </div>
+
+            <div class="formGroup">
+                <span class="or"><span class="orInner">- or -</span></span>
+            </div>
+
+            <div class="formGroup">
+                <button type="button" class="btn facebookBtn" (click)="authService.FacebookAuth()">
+                    <i class="icon-facebook"></i>
+                    Sign in with facebook
+                </button>
+            </div>
+            <!-- Calling GoogleAuth Api from AuthService -->
+            <div class="formGroup">
+                <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+                    <i class="icon-google"></i>
+                    Sign in with google
+                </button>
+            </div>
+
+            <div class="forgotPassword">
+                <span routerLink="/forgot-password">Forgot Password?</span>
+            </div>
+        </div>
+
+        <div class="redirectToLogin">
+            <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
+        </div>
+
+    </div>
+</div>

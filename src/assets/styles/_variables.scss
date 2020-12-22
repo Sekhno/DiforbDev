@@ -1,0 +1,61 @@
+/* Переменные */
+
+$light-blue-color-rgba: rgba(78, 191, 251, 1);
+$dark-blue-color-rgba: rgba(39, 101, 133, 1);
+$btn-background-rgba: rgba(255, 255, 255, 0.85);
+
+$btn-color: #2eca75;
+$btn-color-bottom: #9ca5a3;
+$btn-color-disabled: rgba(0, 0, 0, .5);
+$btn-color-disabled-hover: #65e36d;
+$btn-color-shadow-disabled: #66ec06;
+
+
+$screen-xs-min: 480px;
+$screen-sm-min: 581px;
+$screen-sm-min2: 758px;
+$screen-md-min: 1002px;
+$screen-lg-min: 1490px;
+
+
+$bgroundBlack0: rgba(0, 0, 0, 0);
+$bgroundBlack2: rgba(0, 0, 0, 0.2);
+$bgroundBlack3: rgba(0, 0, 0, 0.3);
+$bgroundBlack5: rgba(0, 0, 0, 0.5);
+$bgroundBlack6: rgba(0, 0, 0, 0.6);
+$bgroundWhite2: rgba(255, 255, 255, 0.2);
+$bgroundRed2: rgba(255, 0, 0, 0.2);
+
+
+$colorBlueDark: #276585;
+$colorBlueLight: #7beaf4;
+$colorGreen: #52d669;
+$colorGreenDark: #277a54;
+$colorFacebook: #5692d1;
+$colorGoogle: #e06746;
+$colorLogin: #00cd99;
+$colorBlack: #263440;
+
+$heightHeader: 70px;
+$heightContent: calc(100vh - 70px);
+$heightContentWithFooter: calc(100vh - 140px);
+
+$width-sidebar: 315px;
+$width-container: 1500px;
+$width-container-small: 1200px;
+$width-form: 350px;
+
+$lineGradForm: linear-gradient(to bottom, $bgroundBlack3 0, $bgroundBlack0 100%);
+
+
+
+@media (min-width: $screen-xs-min) {}
+
+@media (min-width: $screen-sm-min) {}
+
+@media (min-width: $screen-sm-min2) {}
+
+@media (min-width: $screen-md-min) {}
+
+@media (min-width: $screen-lg-min) {}
+        

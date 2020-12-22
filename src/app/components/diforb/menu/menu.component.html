@@ -1,0 +1,58 @@
+<main class="full" fxLayot="row" [@slideLeft]="opened ? 'active' : 'inactive'">
+    <nav class="sidebar-navigation" fxFlex="270px" fxLayout="column">
+
+        <div class="sideBarSection darkAlpha4">
+            <div class="diforb-logo">
+                <i class="icon-logo"></i>
+            </div>
+        </div>
+    
+        <div class="sideBarSection darkAlpha6" *ngIf="authService.userData as user" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="userInfo" fxLayout="row" fxLayoutAlign="center center">
+                <img class="rounded-circle" *ngIf="user.photoURL" src="{{user.photoURL}}" alt="{{user.displayName}}">
+                <i class="icon-avatar" *ngIf="!user.photoURL"></i>
+                <h6>HELLO <br> <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h6>
+            </div>
+            <div class="controls" fxLayout="column" fxLayoutAlign="space-between">
+                <i class="icon-cog" routerLink="settings"></i>
+                <i class="icon-logout" (click)="authService.SignOut()"></i>
+            </div>
+        </div> 
+    
+        <div class="sideBarSection darkAlpha4 sidebarLink" fxLayout="row" fxLayoutAlign="left center"
+            routerLink="/dashboard">
+            <i class="icon-libs"></i>
+            <span>Libraries</span>
+        </div>
+    
+        <div class="sideBarSection darkAlpha4 sidebarLink" fxLayout="row" fxLayoutAlign="left center"
+            routerLink="tutorial">
+            <i class="icon-play"></i>
+            <span>Watch Tutorial</span>
+        </div>
+    
+        <div class="sideBarSection darkAlpha4 sidebarLink" fxLayout="row" fxLayoutAlign="left center"
+            routerLink="faq">
+            <i class="icon-info"></i>
+            <span>F.A.Q.</span>
+        </div>
+    
+        <div class="sideBarSection darkAlpha2 noneBorder" fxLayout="row" fxLayoutAlign="left center" fxFlex="100%" >
+            <ul class="commonLinks" fxLayout="column" fxLayoutAlign="center" fxFlexOffset="20px">
+                <li routerLink="license">License agreement</li>
+                <li routerLink="privacy">Privacy policy</li>
+                <li routerLink="support">Support</li>
+                <li routerLink="touch">Get in touch</li>
+            </ul>
+        </div>
+    
+        <div class="sideBarSection darkAlpha8 socialLinks noneBorder" fxLayout="row" fxLayoutAlign="end center">
+            <a class="icon-facebook" href="#" target="_blank"></a>
+            <a class="icon-google" href="#" target="_blank"></a>
+            <a class="icon-twitter" href="#" target="_blank"></a>
+        </div>
+    
+    </nav>
+
+    <div class="dashboard darkAlpha2" fxFlex="100%"></div>
+</main>

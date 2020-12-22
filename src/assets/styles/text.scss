@@ -1,0 +1,53 @@
+$colorWhite: #FFFFFF;
+$colorBlack: #000000;
+$alpha2: 0.2;
+
+.textWrapper {
+    background-color: $colorWhite
+}
+
+
+
+.textWrapperHead {
+	position: relative;
+	font-size: 0;
+    overflow: hidden;
+
+    span {
+
+        &:first-child {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            border: 15px solid $colorWhite;
+            border-left-color: transparent;
+            border-top-color: transparent;
+
+            &:before {
+                content: '';
+                display: inline-block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 0;
+                height: 0;
+                border: 15px solid rgba($colorBlack, $alpha2);
+                border-left-color: transparent;
+                border-top-color: transparent;
+                border-radius: 0 0 3px 0;
+            }
+        }
+
+        &:last-child {
+            display: inline-block;
+            height: 30px;
+            width: 100%;
+            margin-right: -30px;
+            background: $colorWhite;
+        }
+    }
+}
+
+.textWrapper {
+    padding: 20px;
+}
